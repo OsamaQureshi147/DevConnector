@@ -6,10 +6,14 @@ const connectDB = require('./config/db')
 //Connect Database
 connectDB();
 
+//Init middleware to parse body
+app.use(express.json({ extended: false }));
+
+
 app.get('/', (req, res) => res.send('API Running...'));
 const PORT = process.env.PORT || 5000;
 
-//Define ROutes
+//Define Routes
 app.use('/api/users', require('./Routes/api/users'));
 app.use('/api/auth', require('./Routes/api/auth'));
 app.use('/api/profile', require('./Routes/api/profile'));
