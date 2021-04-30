@@ -59,14 +59,14 @@ router.post('/', [
         const payload = {
             user: {
                 id: user.id,
-                name: user.name
+                // name: user.name // we can also send other params like username etc 
             }
         }
 
         jwt.sign(
             payload,
             config.get('jwtSecret'),
-            { expiresIn: 36000 }, //this argument is optional
+            { expiresIn: 360000 }, //this argument is optional
             (err, token) => {
                 if (err) throw err;
                 res.json({ token });
